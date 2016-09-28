@@ -1,0 +1,44 @@
+<div class="top" flex>
+    <div class="slider">
+        <div class="background-img">
+            <div class="block-img">
+                <img class="img" data-ng-src="{{current.src}}" alt="">
+            </div>
+            <h1 class="text" data-ng-bind="current.name"></h1>
+            <div class="detail" layout="column" layout-align="space-between center">
+                <div class="start-date" layout="column">
+                    <span class="text">Початок продаж</span>
+                    <span class="text" data-ng-bind="current.startDay"></span>
+                </div>
+
+                <div class="prices">
+                    <div class="price" data-ng-repeat="el in current.prices track by $index">
+                        <span class="text" data-ng-bind="el.price"></span>
+                    </div>
+                </div>
+
+                <div class="exp-date" layout="column">
+                    <span class="text">Закінчення продаж</span>
+                    <span class="text" data-ng-bind="current.expDay"></span>
+                </div>
+                <md-button class="md-raised">Купити</md-button>
+            </div>
+        </div>
+    </div>
+
+    <div class="schedule">
+        <h1 class="header">Розклад фільмів</h1>
+        <div class="block-film" data-ng-repeat="film in films track by $index">
+            <div class="film" layout="row">
+                <div class="block-img">
+                    <img class="img" src="{{film.src}}" alt="">
+                    <div class="name"><span class="text">asdasd</span></div>
+                </div>
+                <div class="select-time" flex layout="row" layout-align="space-around center">
+                    <md-button class="time md-whiteframe-3dp" data-ng-click="" data-ng-repeat="time in film.time"
+                         data-ng-bind="time.time"></md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

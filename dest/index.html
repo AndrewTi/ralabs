@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-ng-app="cinemaApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles/app.css">
+</head>
+<body data-ng-controller="globalCtrl">
+
+<header class="header" flex>
+    <div class="lap" layout="row" layout-align="space-between" hide show-gt-xs flex>
+        <div class="buttons -left">
+            <md-button class="button md-raised"><span class="text">Розклад</span></md-button>
+            <md-button class="button md-raised"><span class="text">Фільми</span></md-button>
+            <md-button class="button md-raised"><span class="text">Акції</span></md-button>
+            <md-button class="button md-raised"><span class="text">Про нас</span></md-button>
+        </div>
+        <div class="buttons -right">
+            <md-button class="button md-raised"><span class="text">Увійти</span></md-button>
+        </div>
+    </div>
+    <div class="mob" layout="row" hide show-xs flex>
+        <md-button class="button md-raised">Увійти</md-button>
+    </div>
+</header>
+
+<div class="body">
+    <div ng-include="'http://localhost:3000/dest/view/home/home.html'"></div>
+</div>
+
+<h2>Hello world ? footer</h2>
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-aria/angular-aria.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../node_modules/angular-material/angular-material.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

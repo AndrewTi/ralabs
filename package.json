@@ -1,0 +1,27 @@
+{
+  "name": "ralabs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gulp": "4.0.0-alpha.2",
+    "gulp-less": "3.1.0",
+    "gulp-babel": "6.1.2",
+    "babel-preset-es2015": "6.14.0",
+    "gulp-sourcemaps": "1.6.0",
+    "del": "2.2.2",
+    "gulp-concat": "2.6.0",
+    "browser-sync": "2.16.0",
+    "gulp-rigger": "0.5.8",
+    "angular": "1.5.8",
+    "angular-material": "",
+    "angular-aria": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-route": "1.5.8"
+  },
+  "author": "",
+  "license": "ISC"
+}
