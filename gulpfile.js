@@ -60,7 +60,7 @@ gulp.task("delHtml", () => {
 gulp.task("initServer" , () => {
     return browSync.init({
         server: "./",
-        startPath: "dest/index.html"
+        startPath: "dest/#"
     });
 });
 

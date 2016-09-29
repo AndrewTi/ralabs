@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width">
+    <link href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="styles/app.css">
 </head>
 <body data-ng-controller="globalCtrl">
 
-<header class="header" flex>
+<header class="header" id="header" flex>
     <div class="lap" layout="row" layout-align="space-between" hide show-gt-xs flex>
         <div class="buttons -left">
-            <md-button class="button md-raised"><span class="text">Розклад</span></md-button>
-            <md-button class="button md-raised"><span class="text">Фільми</span></md-button>
-            <md-button class="button md-raised"><span class="text">Акції</span></md-button>
-            <md-button class="button md-raised"><span class="text">Про нас</span></md-button>
+            <md-button class="button md-raised"><a href="#/home" class="link">Головна</a></md-button>
+            <md-button class="button md-raised"><a class="link">Фільми</a></md-button>
+            <md-button class="button md-raised"><a class="link">Акції</a></md-button>
+            <md-button class="button md-raised"><a class="link">Про нас</a></md-button>
         </div>
         <div class="buttons -right">
-            <md-button class="button md-raised"><span class="text">Увійти</span></md-button>
+            <md-button class="button md-raised"><span class="link">Увійти</span></md-button>
         </div>
     </div>
     <div class="mob" layout="row" hide show-xs flex>
@@ -28,10 +29,43 @@
 </header>
 
 <div class="body">
-    <div ng-include="'http://localhost:3000/dest/view/home/home.html'"></div>
+    <div ng-view></div>
 </div>
 
-<h2>Hello world ? footer</h2>
+<div class="footer" layout="row" layout-wrap="wrap" layout-align="space-around">
+    <div class="block-tx" layout="column" layout-align="center center">
+        <div class="list">Phone: 300000000</div>
+        <div class="list">Phone: 300000001</div>
+        <div class="list">Phone: 300000002</div>
+        <div class="list">Email: asdasd@gmail.com</div>
+    </div>
+    <div class="social" layout="row" layout-wrap="wrap" layout-align="center center">
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=twitter" target="_blank" class="link socicon-twitter"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=facebook" target="_blank" class="link socicon-facebook"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=socicon-googleplus" target="_blank" class="link socicon-googleplus"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=pinterest" target="_blank" class="link socicon-pinterest"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=linkedin" target="_blank" class="link socicon-linkedin"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=soundcloud" target="_blank" class="link socicon-soundcloud"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=instagram" target="_blank" class="link socicon-instagram"></a>
+        </div>
+        <div class="icon">
+            <a href="https://www.google.com.ua/#q=reddit" target="_blank" class="link socicon-reddit"></a>
+        </div>
+    </div>
+</div>
 
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-aria/angular-aria.js"></script>

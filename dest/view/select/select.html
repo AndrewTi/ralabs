@@ -1,0 +1,47 @@
+<div class="select">
+    <div class="if" data-ng-if="select.film">
+        <div class="about" layout="row" layout-align="space-around" layout-wrap="wrap">
+            <div class="block-img">
+                <img data-ng-src="{{select.film.srcLarge}}" alt="img" class="img">
+            </div>
+            <div class="block-tx">
+                <h2 class="header" data-ng-bind="select.film.name"></h2>
+                <div class="text" data-ng-bind="select.film.description"></div>
+            </div>
+        </div>
+
+        <div class="select-place" flex layout="column" layout-align="center center">
+            <h2 class="header" data-ng-if="select.time" data-ng-bind="'Вибраний час : '+select.time"></h2>
+            <md-button class="button" data-ng-click="clearTime()" data-ng-if="select.time">вибрати час</md-button>
+            <h3 class="header" data-ng-if="select.time">Вибиріть місця</h3>
+            <div class="places" data-ng-if="select.time" layout="column" layout-align="center center"
+                 data-ng-repeat="line in places track by $index">
+                <div class="line" layout="row">
+                    <div class="place" data-ng-repeat="place in line.places track by $index">
+                        <div class="select-place -enabled" data-ng-if="place == 'free'"
+                             data-ng-click="addPlace(line.id, 1+$index)">{{1+$index}}</div>
+
+                        <div class="select-place -select" data-ng-if="place == 'select'"
+                             data-ng-click="removePlace(line.id, 1+$index)">{{1+$index}}</div>
+                        <div class="select-place -disabled" data-ng-if="place == 'reserved'">{{1+$index}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="show-place" data-ng-if="select.time" layout="column"
+                 layout-align="center center">
+                <h2 class="header" data-ng-bind="'Квитків вибрано: '+countTickets.length"></h2>
+                <div class="place" data-ng-repeat="el in countTickets track by $index">
+                    Ряд : {{el.line}} місце : {{el.place}}
+                </div>
+            </div>
+            <h2 class="header" data-ng-if="!select.time">Виберіть час</h2>
+            <div class="select-time" data-ng-if="!select.time" layout="row" layout-align="center center">
+                <md-button class="time md-whiteframe-3dp" data-ng-click="selectFilm(select.film, time.time)"
+                           data-ng-repeat="time in select.film.time"
+                           data-ng-bind="time.time">
+                </md-button>
+
+            </div>
+        </div>
+    </div>
+</div>

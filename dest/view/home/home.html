@@ -1,8 +1,8 @@
-<div class="top" flex>
-    <div class="slider">
+<div class="top" flex id="top">
+    <div class="slider" hide show-gt-xs>
         <div class="background-img">
             <div class="block-img">
-                <img class="img" data-ng-src="{{current.src}}" alt="">
+                <img class="img" data-ng-src="{{current.srcLarge}}" alt="">
             </div>
             <h1 class="text" data-ng-bind="current.name"></h1>
             <div class="detail" layout="column" layout-align="space-between center">
@@ -21,22 +21,40 @@
                     <span class="text">Закінчення продаж</span>
                     <span class="text" data-ng-bind="current.expDay"></span>
                 </div>
-                <md-button class="md-raised">Купити</md-button>
+                <md-button class="md-raised" data-ng-click="selectFilm(current)">Купити</md-button>
             </div>
         </div>
     </div>
 
-    <div class="schedule">
+    <div class="schedule" id="schedule" hide show-gt-sm>
         <h1 class="header">Розклад фільмів</h1>
         <div class="block-film" data-ng-repeat="film in films track by $index">
             <div class="film" layout="row">
-                <div class="block-img">
+                <div class="block-img" layout="column" layout-align="end">
                     <img class="img" src="{{film.src}}" alt="">
-                    <div class="name"><span class="text">asdasd</span></div>
+                    <div class="name">
+                        <span class="text" data-ng-bind="film.name"></span>
+                    </div>
                 </div>
-                <div class="select-time" flex layout="row" layout-align="space-around center">
-                    <md-button class="time md-whiteframe-3dp" data-ng-click="" data-ng-repeat="time in film.time"
-                         data-ng-bind="time.time"></md-button>
+                <div class="select-time" data-ng-class-even="'even'"
+                     flex layout="row" layout-align="space-around center">
+                    <md-button class="time md-whiteframe-3dp" data-ng-click="selectFilm(film, time.time)"
+                               data-ng-repeat="time in film.time"
+                               data-ng-bind="time.time">
+                    </md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="films-theaters">
+        <h1 class="header">Фільми в прокаті</h1>
+        <div class="block-films" layout="row" layout-wrap="wrap" layout-align="center">
+            <div class="film" data-ng-repeat="film in films track by $index"
+                    layout="column" layout-align="center" data-ng-click="selectFilm(film)">
+                <img class="img" src="{{film.src}}" alt="">
+                <div class="name">
+                    <span class="text" data-ng-bind="film.name"></span>
                 </div>
             </div>
         </div>
