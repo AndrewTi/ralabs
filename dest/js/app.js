@@ -2,17 +2,17 @@
 
 angular.module("cinemaApp", ["ngMaterial", "ngRoute"]).config(function ($routeProvider) {
     $routeProvider.when("/", {
-        templateUrl: "https://AndrewTi.github.io/dest/view/home/home.html"
+        templateUrl: "https://AndrewTi.github.io/ralabs/dest/view/home/home.html"
     }).when("/home", {
-        templateUrl: "https://AndrewTi.github.io/dest/view/home/home.html"
+        templateUrl: "https://AndrewTi.github.io/ralabs/dest/view/home/home.html"
     }).when("/select", {
-        templateUrl: "https://AndrewTi.github.io/dest/view/select/select.html"
+        templateUrl: "https://AndrewTi.github.io/ralabs/dest/view/select/select.html"
     }).when("/film", {
-        templateUrl: "https://AndrewTi.github.io/dest/view/film/film.html"
+        templateUrl: "https://AndrewTi.github.io/ralabs/dest/view/film/film.html"
     }).when("/shares", {
-        templateUrl: "https://AndrewTi.github.io/dest/view/shares/shares.html"
+        templateUrl: "https://AndrewTi.github.io/ralabs/dest/view/shares/shares.html"
     }).when("/about", {
-        templateUrl: "https://AndrewTi.github.io/dest/view/about/about.html"
+        templateUrl: "https://AndrewTi.github.io/ralabs/dest/view/about/about.html"
     });
 }).controller("globalCtrl", function ($scope, $location) {
 
