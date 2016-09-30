@@ -1,3 +1,3 @@
 # ralabs
 
-## link : https://AndrewTi.github.io/ralabs/dest/#/home
+## link : https://AndrewTi.github.io/ralabs/dest/index.html#/
