@@ -1,0 +1,12 @@
+<div class="body-films" layout="column" layout-align="center center">
+    <div class="films" layout="row" layout-align="center" data-ng-repeat="film in films track by $index" layout-wrap="wrap">
+        <div class="block-img" layout="column" layout-align="space-between">
+            <img data-ng-src="{{film.src}}" alt="" class="img">
+            <div class="name" data-ng-bind="film.name"></div>
+            <md-button class="button md-whiteframe-3dp" data-ng-click="selectFilm(film)">
+                Купити
+            </md-button>
+        </div>
+        <div class="text" data-ng-bind="film.description"></div>
+    </div>
+</div>

@@ -12,7 +12,7 @@
 
         <div class="select-place" flex layout="column" layout-align="center center">
             <h2 class="header" data-ng-if="select.time" data-ng-bind="'Вибраний час : '+select.time"></h2>
-            <md-button class="button" data-ng-click="clearTime()" data-ng-if="select.time">вибрати час</md-button>
+            <md-button class="button" data-ng-click="clearTime(); clearPlace()" data-ng-if="select.time">вибрати час</md-button>
             <h3 class="header" data-ng-if="select.time">Вибиріть місця</h3>
             <div class="places" data-ng-if="select.time" layout="column" layout-align="center center"
                  data-ng-repeat="line in places track by $index">
@@ -33,6 +33,7 @@
                 <div class="place" data-ng-repeat="el in countTickets track by $index">
                     Ряд : {{el.line}} місце : {{el.place}}
                 </div>
+                <md-button class="time md-whiteframe-3dp" data-ng-click="buyTickets()">Купити</md-button>
             </div>
             <h2 class="header" data-ng-if="!select.time">Виберіть час</h2>
             <div class="select-time" data-ng-if="!select.time" layout="row" layout-align="center center">

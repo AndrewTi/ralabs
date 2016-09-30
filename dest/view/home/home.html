@@ -21,7 +21,7 @@
                     <span class="text">Закінчення продаж</span>
                     <span class="text" data-ng-bind="current.expDay"></span>
                 </div>
-                <md-button class="md-raised" data-ng-click="selectFilm(current)">Купити</md-button>
+                <md-button class="md-raised" data-ng-click="selectFilm(current); clearPlace()">Купити</md-button>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="select-time" data-ng-class-even="'even'"
                      flex layout="row" layout-align="space-around center">
-                    <md-button class="time md-whiteframe-3dp" data-ng-click="selectFilm(film, time.time)"
+                    <md-button class="time md-whiteframe-3dp" data-ng-click="selectFilm(film, time.time); clearPlace()"
                                data-ng-repeat="time in film.time"
                                data-ng-bind="time.time">
                     </md-button>
@@ -51,7 +51,7 @@
         <h1 class="header">Фільми в прокаті</h1>
         <div class="block-films" layout="row" layout-wrap="wrap" layout-align="center">
             <div class="film" data-ng-repeat="film in films track by $index"
-                    layout="column" layout-align="center" data-ng-click="selectFilm(film)">
+                    layout="column" layout-align="center" data-ng-click="clearPlace(); selectFilm(film) ">
                 <img class="img" src="{{film.src}}" alt="">
                 <div class="name">
                     <span class="text" data-ng-bind="film.name"></span>

@@ -9,9 +9,50 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"])
             })
             .when("/select", {
                 templateUrl: "http://localhost:3000/dest/view/select/select.html"
+            })
+            .when("/film", {
+                templateUrl: "http://localhost:3000/dest/view/film/film.html"
+            })
+            .when("/shares", {
+                templateUrl: "http://localhost:3000/dest/view/shares/shares.html"
+            })
+            .when("/about", {
+                templateUrl: "http://localhost:3000/dest/view/about/about.html"
             });
     })
     .controller("globalCtrl", ($scope, $location) => {
+
+        //LOCAL FUNCTION
+
+        let findEl = (data, line, index) => {
+            for(let el in $scope.places) {
+                if($scope.places[el].id == line) {
+                    $scope.places[el].places[index] = data;
+                    return {line: line, place: index};
+                }
+            }
+        };
+
+        let count = 0;
+
+        setInterval(() => {
+            ++count;
+            if(count >= $scope.films.length) count = 0;
+            $scope.current = $scope.films[count];
+            $scope.$apply();
+        },10000);
+
+
+        //GLOBAL FUNCTION
+
+        $scope.buyTickets = () => {
+            $scope.countTickets.map(e => {
+                let elem = findEl("reserved",e.line, e.place);
+            });
+
+            $scope.countTickets = [];
+        };
+
 
         $scope.selectFilm = (data, time = null) => {
             $scope.select.film = data;
@@ -23,16 +64,15 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"])
             $scope.select.time = null;
         };
 
-        $scope.countTickets = [];
+        $scope.clearPlace = () => {
+            $scope.countTickets.map(e => {
+                let elem = findEl("free",e.line, e.place);
+            });
 
-        let findEl = (data, line, index) => {
-            for(let el in $scope.places) {
-                if($scope.places[el].id == line) {
-                    $scope.places[el].places[index] = data;
-                    return {line: line, place: index};
-                }
-            }
+            $scope.countTickets = [];
         };
+
+
 
         $scope.addPlace = (line, index) => {
             $scope.countTickets.push(findEl("select",line, index));
@@ -50,6 +90,15 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"])
                 num++;
             });
 
+        };
+
+        //HARDCODE
+
+        $scope.countTickets = [];
+
+        $scope.select = {
+            time: null,
+            film: null,
         };
 
         $scope.selectPlaces = {};
@@ -106,11 +155,6 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"])
                     8:"free"
                 }
             }
-        };
-
-        $scope.select = {
-                time: null,
-                film: null,
         };
 
         $scope.current = {

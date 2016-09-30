@@ -7,8 +7,44 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"]).config(function ($routePr
         templateUrl: "http://localhost:3000/dest/view/home/home.html"
     }).when("/select", {
         templateUrl: "http://localhost:3000/dest/view/select/select.html"
+    }).when("/film", {
+        templateUrl: "http://localhost:3000/dest/view/film/film.html"
+    }).when("/shares", {
+        templateUrl: "http://localhost:3000/dest/view/shares/shares.html"
+    }).when("/about", {
+        templateUrl: "http://localhost:3000/dest/view/about/about.html"
     });
 }).controller("globalCtrl", function ($scope, $location) {
+
+    //LOCAL FUNCTION
+
+    var findEl = function findEl(data, line, index) {
+        for (var el in $scope.places) {
+            if ($scope.places[el].id == line) {
+                $scope.places[el].places[index] = data;
+                return { line: line, place: index };
+            }
+        }
+    };
+
+    var count = 0;
+
+    setInterval(function () {
+        ++count;
+        if (count >= $scope.films.length) count = 0;
+        $scope.current = $scope.films[count];
+        $scope.$apply();
+    }, 10000);
+
+    //GLOBAL FUNCTION
+
+    $scope.buyTickets = function () {
+        $scope.countTickets.map(function (e) {
+            var elem = findEl("reserved", e.line, e.place);
+        });
+
+        $scope.countTickets = [];
+    };
 
     $scope.selectFilm = function (data) {
         var time = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
@@ -22,15 +58,12 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"]).config(function ($routePr
         $scope.select.time = null;
     };
 
-    $scope.countTickets = [];
+    $scope.clearPlace = function () {
+        $scope.countTickets.map(function (e) {
+            var elem = findEl("free", e.line, e.place);
+        });
 
-    var findEl = function findEl(data, line, index) {
-        for (var el in $scope.places) {
-            if ($scope.places[el].id == line) {
-                $scope.places[el].places[index] = data;
-                return { line: line, place: index };
-            }
-        }
+        $scope.countTickets = [];
     };
 
     $scope.addPlace = function (line, index) {
@@ -48,6 +81,15 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"]).config(function ($routePr
             }
             num++;
         });
+    };
+
+    //HARDCODE
+
+    $scope.countTickets = [];
+
+    $scope.select = {
+        time: null,
+        film: null
     };
 
     $scope.selectPlaces = {};
@@ -104,11 +146,6 @@ angular.module("cinemaApp", ["ngMaterial", "ngRoute"]).config(function ($routePr
                 8: "free"
             }
         }
-    };
-
-    $scope.select = {
-        time: null,
-        film: null
     };
 
     $scope.current = {
